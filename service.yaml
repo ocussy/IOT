@@ -8,4 +8,4 @@ spec:
     targetPort: 8888
     protocol: TCP
   selector:
-    app: willplayground
+    app: wilplayground
