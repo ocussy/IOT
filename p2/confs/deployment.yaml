@@ -75,6 +75,7 @@ spec:
         image: nginx:alpine
         ports:
         - containerPort: 80
+        # serve the custom index.html from configmap
         volumeMounts:
           - name: nginx-index-file
             mountPath: /usr/share/nginx/html/

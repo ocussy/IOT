@@ -9,7 +9,7 @@ spec:
   #where to find the source files
     repoURL: https://github.com/ocussy/IOT
     targetRevision: HEAD
-    path: ./
+    path: ./p3/confs/app
   destination:
   #where to deploy
     server: https://kubernetes.default.svc

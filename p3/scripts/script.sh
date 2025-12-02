@@ -47,10 +47,13 @@ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/st
 echo "⏳ Waiting for ArgoCD server to start (timeout 5m)..."
 kubectl wait --for=condition=available deployment/argocd-server -n argocd --timeout=300s
 
-# 8. Get Admin Password (FIXED METHOD)
+# 8. Apply ArgoCD App
+echo "🚀 Applying ArgoCD application..."
+kubectl apply -f ../confs/app.yaml
+
+# 9. Get Admin Password (FIXED METHOD)
 # We use kubectl because 'argocd' CLI is not installed
 echo "🔑 Retrieving admin password..."
-PASSWORD=$(kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d)
 
 echo ""
 echo "--- SETUP COMPLETE ---"
@@ -60,3 +63,8 @@ echo "----------------------"
 echo "To access ArgoCD, run this command in a NEW terminal:"
 echo "kubectl port-forward svc/argocd-server -n argocd 8080:443"
 echo "Then open: https://localhost:8080"
+echo "----------------------"
+echo "To access the app :"
+echo "kubectl port-forward svc/wilplayground-service -n dev 8888:8888"
+echo "Then open: http://localhost:8888"
+echo "----------------------"
